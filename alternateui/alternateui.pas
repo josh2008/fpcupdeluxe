@@ -1422,8 +1422,8 @@ var    flagt:integer;
 begin
   // Memorize Title
   alternateui_form1_title:=form1.Caption;
-
-  alternateui_title:=StringReplace(alternateui_form1_title,'base','('+AlternateUi_Version+') base',[rfReplaceAll]);
+  if pos('base',alternateui_form1_title)>0 then alternateui_title:=StringReplace(alternateui_form1_title,'base','('+AlternateUi_Version+') base',[rfReplaceAll])
+  else alternateui_title:=StringReplace(alternateui_form1_title,'for','('+AlternateUi_Version+') for',[rfReplaceAll]);
 
 
   // create a button on form1 to activate interface
