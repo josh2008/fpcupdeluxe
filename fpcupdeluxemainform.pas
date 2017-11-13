@@ -239,11 +239,7 @@ begin
   'FPCUPdeluxe V'+
   {$endif}
     DELUXEVERSION+
-    ' base fpcup'+
-    RevisionStr+
-    ' ('+
-    VersionDate+
-    ') for ' +
+    ' for ' +
     GetTargetCPUOS+
     '-'+
     aTarget;
@@ -849,6 +845,9 @@ begin
       memoSummary.Lines.Append(SynEdit1.Lines[x+2]);
     end;
   end;
+  {$ifdef usealternateui}
+  alternateui_AddMessage(s);
+  {$endif}
 
 end;
 
@@ -2647,6 +2646,9 @@ begin
   SynEdit1.CaretX:=0;
   SynEdit1.CaretY:=SynEdit1.Lines.Count;
   if UpdateStatus then StatusMessage.Text:=aMessage;
+  {$ifdef usealternateui}
+  alternateui_AddMessage(amessage,updatestatus);
+  {$endif}  
   Application.ProcessMessages;
 end;
 
